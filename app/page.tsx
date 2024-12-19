@@ -3,14 +3,14 @@ import Image from "next/image";
 import { fetchCars } from "@/utils";
 import { manufacturers } from "@/constants";
 
-export default async function Home({searchParams} ) {
-  const allCars = await fetchCars( {
-    manufacturer : searchParams.manufacturer   || '', 
-    year : searchParams.year  || 2024, 
-    fuel : searchParams.fuel   || '',
-    limit : searchParams.limit || 10 ,  
-    model : searchParams.model   || '', 
-
+export default async function Home() {
+  // Replace 'searchParams' with default query parameters directly in the function
+  const allCars = await fetchCars({
+    manufacturer: '', 
+    year: 2024, 
+    fuel: '', 
+    limit: 10,  
+    model: '', 
   });
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
