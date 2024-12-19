@@ -1,16 +1,14 @@
 import { CarCard, CustomFilter, Hero, SearchBar } from "@/components";
-import Image from "next/image";
 import { fetchCars } from "@/utils";
-import { manufacturers } from "@/constants";
 
 export default async function Home() {
   // Fetch car data with default parameters
   const allCars = await fetchCars({
-    manufacturer: '', 
-    year: 2024, 
-    fuel: '', 
-    limit: 10,  
-    model: '', 
+    manufacturer: '',
+    year: 2024,
+    fuel: '',
+    limit: 10,
+    model: '',
   });
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
@@ -26,15 +24,17 @@ export default async function Home() {
         <div className="home__filters">
           <SearchBar />
           <div className="home__filter-container">
-            {/* Ensure CustomFilter properly handles the 'title' prop */}
-            <CustomFilter title="fuel" />
-            <CustomFilter title="year" />
+            {/* Ensure CustomFilter accepts a title prop */}
+            <CustomFilter type="fuel" />
+            <CustomFilter type="year" />
           </div>
         </div>
         {!isDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
-              {allCars?.map((car) => <CarCard key={car.id} car={car} />)}
+              {allCars?.map((car) => (
+                <CarCard key={car.id} car={car} />
+              ))}
             </div>
           </section>
         ) : (
