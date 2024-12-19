@@ -25,8 +25,8 @@ export default async function Home() {
           <SearchBar />
           <div className="home__filter-container">
             {/* Ensure CustomFilter accepts a title prop */}
-            <CustomFilter type="fuel" />
-            <CustomFilter type="year" />
+            <CustomFilter />
+            <CustomFilter />
           </div>
         </div>
         {!isDataEmpty ? (
