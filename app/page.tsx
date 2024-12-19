@@ -4,7 +4,7 @@ import { fetchCars } from "@/utils";
 import { manufacturers } from "@/constants";
 
 export default async function Home() {
-  // Replace 'searchParams' with default query parameters directly in the function
+  // Fetch car data with default parameters
   const allCars = await fetchCars({
     manufacturer: '', 
     year: 2024, 
@@ -26,6 +26,7 @@ export default async function Home() {
         <div className="home__filters">
           <SearchBar />
           <div className="home__filter-container">
+            {/* Ensure CustomFilter properly handles the 'title' prop */}
             <CustomFilter title="fuel" />
             <CustomFilter title="year" />
           </div>
